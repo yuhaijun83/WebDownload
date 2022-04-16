@@ -96,19 +96,23 @@ public class Download {
 						System.out.println("Download Successful !!!");
 						break;
 					} else if (e instanceof IOException) {
-						System.err.println(e.getMessage());
+						if (i == 0) {
+							bDownRet = true;
+							break;
+						} else {
+							System.err.println(e.getMessage());
+						}
 					} else {
-						;
+						System.err.println(e.getMessage());
 					}
 				} finally {
-					if (bDownRet) {
+					if (bDownRet == true) {
 						break;
 					}
 				}
-
 			}
 
-			if (!bDownRet) {
+			if (bDownRet == false) {
 				break;
 			}
 		}
